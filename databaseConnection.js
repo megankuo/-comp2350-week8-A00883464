@@ -2,28 +2,27 @@ const mysql = require('mysql2');
 
 const is_heroku = process.env.IS_HEROKU || false;
 
+// mysql://b5cd6e94de059e:cb794693@us-cdbr-east-03.cleardb.com/heroku_6883605ec53e29b?reconnect=true
 const dbConfigHeroku = {
-	host: "us-cdbr-east-03.cleardb.com",
-	user: "b1ab7fb2ee03bc",
-	password: "2a484a2d",
-	database: "heroku_3d208ad4bd6f421",
-	multipleStatements: false
+  host: 'us-cdbr-east-03.cleardb.com',
+  user: 'b5cd6e94de059e',
+  password: 'cb794693',
+  database: 'heroku_6883605ec53e29b',
+  multipleStatements: false,
 };
 
 const dbConfigLocal = {
-	host: "localhost",
-	user: "root",
-	password: "Password",
-	database: "lab_example",
-	multipleStatements: false
+  host: 'localhost',
+  user: 'root',
+  password: 'Password',
+  database: 'lab_example',
+  multipleStatements: false,
 };
 
 if (is_heroku) {
-	var database = mysql.createPool(dbConfigHeroku);
-}
-else {
-	var database = mysql.createPool(dbConfigLocal);
+  var database = mysql.createPool(dbConfigHeroku);
+} else {
+  var database = mysql.createPool(dbConfigLocal);
 }
 
 module.exports = database;
-		
